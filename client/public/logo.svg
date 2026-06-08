@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 434" role="img" aria-labelledby="title desc">
+  <title id="title">StandardAIze logo</title>
+  <desc id="desc">Transparent SVG recreation of the StandardAIze logo with gradient AI letters and gradient AI sparkles inside the document icon, replacing the checkmark.</desc>
+  <defs>
+    <linearGradient id="iconGradient" x1="92" y1="255" x2="333" y2="158" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#123852"/>
+      <stop offset="1" stop-color="#45A8F8"/>
+    </linearGradient>
+    <linearGradient id="aiGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0" stop-color="#123852"/>
+      <stop offset="1" stop-color="#45A8F8"/>
+    </linearGradient>
+    <style>
+      .letters { font-family: Inter, Arial, Helvetica, sans-serif; font-weight: 800; }
+      .dark { fill: #231f20; }
+      .ai { fill: url(#aiGradient); }
+      .doc { fill: none; stroke: #123852; stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
+      .doc-detail { fill: none; stroke: #123852; stroke-width: 14; stroke-linecap: round; }
+      .speed { fill: none; stroke: url(#iconGradient); stroke-width: 14; stroke-linecap: round; }
+      .dot { fill: url(#iconGradient); }
+      .sparkle { fill: url(#aiGradient); }
+    </style>
+  </defs>
+
+  <!-- transparent background intentionally omitted -->
+
+  <!-- left motion marks -->
+  <circle class="dot" cx="118" cy="177" r="8"/>
+  <circle class="dot" cx="94" cy="207" r="7"/>
+  <circle class="dot" cx="92" cy="266" r="7"/>
+  <path class="speed" d="M144 177h70"/>
+  <path class="speed" d="M133 207h67"/>
+  <path class="speed" d="M122 237h80"/>
+  <path class="speed" d="M115 266h70"/>
+
+  <!-- document icon -->
+  <path class="doc" d="M205 142h82l38 38v125c0 10-8 18-18 18H199c-10 0-18-8-18-18V166c0-13 11-24 24-24Z"/>
+  <path class="doc" d="M286 143v39h38"/>
+  <path class="doc-detail" d="M222 207h73"/>
+  <path class="doc-detail" d="M222 237h48"/>
+
+  <!-- AI sparkle group replacing checkmark -->
+  <g>
+    <path class="sparkle" d="M254 232
+      C260 255 267 262 290 268
+      C267 274 260 281 254 304
+      C248 281 241 274 218 268
+      C241 262 248 255 254 232Z"/>
+    <path class="sparkle" d="M314 246
+      C317 257 321 261 332 264
+      C321 267 317 271 314 282
+      C311 271 307 267 296 264
+      C307 261 311 257 314 246Z"/>
+    <path class="sparkle" d="M277 294
+      C279 300 281 302 287 304
+      C281 306 279 308 277 314
+      C275 308 273 306 267 304
+      C273 302 275 300 277 294Z"/>
+  </g>
+
+  <!-- wordmark -->
+  <text class="letters" x="362" y="276" font-size="122" letter-spacing="-7">
+    <tspan class="dark">Standard</tspan><tspan class="ai">AI</tspan><tspan class="dark">ze</tspan>
+  </text>
+</svg>
