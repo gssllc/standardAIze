@@ -13,8 +13,11 @@ function App() {
 
   return (
     <main>
-      <h1>React + Express App</h1>
-      <p>{message || "Loading..."}</p>
+      <img
+        className="logo"
+        src="/logo.svg"
+        alt="Logo"
+      />
     </main>
   );
 }

@@ -12,7 +12,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/landingPage", (req, res) => {
-    res.json({ message: "Hello from Express!" });
+    res.json({ 
+        message: "",
+    });
 });
 
 app.listen(PORT, () => {
