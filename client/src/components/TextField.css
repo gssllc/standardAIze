@@ -1,0 +1,80 @@
+.text-field-container {
+    flex: 1;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 420px);
+    justify-content: center;
+    align-items: start;
+    align-content: center;
+    column-gap: 220px;
+    margin: auto 0;
+}
+
+
+.react-aria-TextField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.react-aria-Label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #e5ebe6;
+}
+
+.react-aria-Input,
+.react-aria-TextArea {
+    width: 100%;
+    min-height: 36px;
+    padding: 5px 12px;
+    box-sizing: border-box;
+    margin: 0;
+
+    border: 1px solid var(--Signal);
+    border-radius: 8px;
+
+    background: var(--Obsidian40);
+    color: #f9fafb;
+    font: 1rem inherit;
+
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.react-aria-TextArea {
+    width: 100%;
+    min-height: 200px;
+    max-height: 400px;
+    padding: 8px;
+    resize: vertical;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.react-aria-Input::placeholder,
+.react-aria-TextArea::placeholder {
+    color: #9ca3af;
+}
+
+.react-aria-Input[data-focused],
+.react-aria-TextArea[data-focused] {
+    border-color: var(--Signal);
+    outline: 2px solid var(--Signal);
+    outline-offset: 2px;
+}
+
+.react-aria-Input[data-disabled],
+.react-aria-TextArea[data-disabled] {
+    opacity: 0.6;
+}
+
+.text-field-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}

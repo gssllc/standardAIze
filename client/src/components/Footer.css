@@ -1,0 +1,27 @@
+.footer {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    z-index: 10;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--Obsidian);
+}
+
+.GSS-logo {
+    height: 35px;
+    width: auto;
+    display: block;
+    cursor: pointer;
+}

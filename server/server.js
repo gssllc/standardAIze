@@ -11,12 +11,6 @@ app.get("/", (req, res) => {
     res.send("Express server is running!");
 });
 
-app.get("/api/landingPage", (req, res) => {
-    res.json({ 
-        message: "",
-    });
-});
-
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });

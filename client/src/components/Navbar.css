@@ -1,0 +1,40 @@
+.navbar {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: relative;
+    z-index: 10;
+}
+
+.standardAIze-logo {
+    height: 45px;
+    width: auto;
+    display: block;
+    cursor: pointer;
+}
+
+@media (max-width: 760px) {
+    .navbar {
+        padding: 8px 12px;
+    }
+
+    .standardAIze-logo {
+        height: 40px;
+    }
+}
+
+@media (max-width: 420px) {
+    .navbar {
+        padding: 8px 10px;
+    }
+
+    .standardAIze-logo {
+        height: 36px;
+    }
+}

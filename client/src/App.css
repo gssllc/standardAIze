@@ -1,7 +1,37 @@
-main {
-  width: 100%;
-}
+.page {
+  width: 100vw;
+  height: 100vh;
 
-.logo {
-  width: 550px;
+  display: flex;
+  flex-direction: column;
+
+  background:
+    radial-gradient(
+      circle at 10% 8%,
+      #1d4ed852 0%,
+      rgba(29, 78, 216, 0.16) 24%,
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(29, 78, 216, 0.2) 0%,
+      rgba(29, 78, 216, 0.08) 22%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 88% 92%,
+      rgba(29, 78, 216, 0.28) 0%,
+      rgba(29, 78, 216, 0.12) 24%,
+      transparent 44%
+    ),
+    linear-gradient(
+      135deg,
+      #061946 0%,
+      #02040b 32%,
+      #03040c 100%
+    );
+
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
 }
