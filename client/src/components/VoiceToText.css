@@ -1,0 +1,84 @@
+.voice-input-container {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.voice-input-button {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.voice-input-button:hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 2px;
+    background: var(--btn-gradient-border);
+    pointer-events: none;
+
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+}
+
+.voice-input-button:hover {
+    background: linear-gradient(#050914, #050914);
+    box-shadow: var(--btn-hover-shadow);
+    animation: voiceBreathing 2s ease-in-out infinite;
+
+}
+
+.voice-input-icon {
+    width: 20px;
+    object-fit: contain;
+    display: block;
+}
+
+.voice-input-status {
+    margin: 0;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.voice-input-button.recording {
+    animation: voiceBreathing 2s ease-in-out infinite;
+    box-shadow: 0 0 18px rgba(255, 77, 77, 0.75);
+}
+
+/* @keyframes voiceBreathing {
+    0% {
+        transform: translateY(-1px) scale(1);
+    }
+
+    50% {
+        transform: translateY(-1px) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(-1px) scale(1);
+    }
+} */

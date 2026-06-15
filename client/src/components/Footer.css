@@ -2,7 +2,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 6px 8px;
-    background: #ffffff;
+    background: transparent;
 
     display: flex;
     align-items: center;
@@ -13,14 +13,15 @@
 }
 
 .footer p {
+    font-family: "Outfit", Arial, sans-serif;
     margin: 0;
     font-size: 14px;
     font-weight: 500;
-    color: var(--Obsidian);
+    color: white;
 }
 
 .GSS-logo {
-    height: 35px;
+    height: 20px;
     width: auto;
     display: block;
     cursor: pointer;

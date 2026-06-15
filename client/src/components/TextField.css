@@ -9,8 +9,8 @@
     align-content: center;
     column-gap: 220px;
     margin: auto 0;
+    z-index: 2;
 }
-
 
 .react-aria-TextField {
     display: flex;
@@ -20,7 +20,7 @@
 }
 
 .react-aria-Label {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: #e5ebe6;
 }
@@ -45,6 +45,7 @@
 }
 
 .react-aria-TextArea {
+    display: block;
     width: 100%;
     min-height: 200px;
     max-height: 400px;
@@ -60,8 +61,8 @@
     color: #9ca3af;
 }
 
-.react-aria-Input[data-focused],
-.react-aria-TextArea[data-focused] {
+.react-aria-Input[data-focused]:not([readonly]),
+.react-aria-TextArea[data-focused]:not([readonly]) {
     border-color: var(--Signal);
     outline: 2px solid var(--Signal);
     outline-offset: 2px;
@@ -76,5 +77,54 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+}
+
+.maintenance-textarea-wrapper,
+.ai-textarea-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.maintenance-textarea-wrapper .react-aria-TextArea {
+    border: 1px solid var(--Signal);
+    border-radius: 8px;
+
+    background:
+        linear-gradient(#101322, #101322) padding-box;
+
+    box-shadow: 0 0 10px var(--Skybolt);
+}
+
+.ai-textarea-wrapper {
+    box-shadow: none;
+}
+
+.ai-textarea-wrapper .react-aria-TextArea {
+    border: 2px solid transparent;
+    border-radius: 8px;
+
+    background:
+        linear-gradient(#101322, #101322) padding-box,
+        var(--btn-gradient-border) border-box;
+
+    background-size: 100% 100%, 300% 300%;
+    background-position: center, 0% 50%;
+
+    box-shadow: 0 0 15px purple;
+    animation: movingGradientBorder 3s linear infinite;
+}
+
+@keyframes movingGradientBorder {
+    0% {
+        background-position: center, 0% 50%;
+    }
+
+    50% {
+        background-position: center, 100% 50%;
+    }
+
+    100% {
+        background-position: center, 0% 50%;
+    }
 }

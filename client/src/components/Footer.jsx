@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-const GSS_logo = "/GSS_Letters_Astronaut.svg";
+const GSS_logo = "/GSS_Letters_White.svg";
 
 function Footer() {
     return (
@@ -10,7 +10,7 @@ function Footer() {
             src={GSS_logo}
             alt="GSS Logo"
         />
-        <p>© 2026 GSS. All rights reserved.</p>
+        {/* <p>© 2026 GSS. All rights reserved.</p> */}
         </nav>
     );
 }

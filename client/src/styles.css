@@ -58,6 +58,13 @@
 
   --btn: var(--Command60);
   --btn-hover-shadow: 0 0 18px rgba(155, 92, 255, 0.35); 
+  --btn-gradient-border: linear-gradient(
+    90deg,
+    #1d4ed8,
+    #c026d3,
+    #e3fc05,
+    #22c55e
+  );
 }
 
 #root, body, html {
@@ -71,6 +78,13 @@
 @font-face {
   font-family: "Rajdhani";
   src: url("./assets/Fonts/Rajdhani/Rajdhani-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/Fonts/Rajdhani/OutfitMedium.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
@@ -119,4 +133,129 @@ select {
 .page {
   width: 100vw;
   height: 100vh;
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform, opacity;
+}
+
+/* Keeps actual page content above the SVG stars */
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* New full SVG star layer 1 */
+/* No mask here. These are actual tiny SVG background images, so they will not break into chunks. */
+.page::before {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 317 241'%3E%3Cpath fill='%2300aaff' fill-opacity='.32' transform='translate(12 18) scale(.1)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 421 293'%3E%3Cpath fill='%2300ff2a' fill-opacity='.26' transform='translate(83 41) scale(.055)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 509 337'%3E%3Cpath fill='%23cd6719' fill-opacity='.22' transform='translate(146 92) scale(.065)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 389 461'%3E%3Cpath fill='%23ff1500' fill-opacity='.22' transform='translate(37 137) scale(.08)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 557 419'%3E%3Cpath fill='%2300aaff' fill-opacity='.28' transform='translate(211 63) scale(.055)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 631 487'%3E%3Cpath fill='%2300ff2a' fill-opacity='.22' transform='translate(52 201) scale(.05)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 467 563'%3E%3Cpath fill='%23cd6719' fill-opacity='.18' transform='translate(178 244) scale(.065)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 719 607'%3E%3Cpath fill='%23ff1500' fill-opacity='.2' transform='translate(267 156) scale(.05)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E");
+
+  background-size:
+    317px 241px,
+    421px 293px,
+    509px 337px,
+    389px 461px,
+    557px 419px,
+    631px 487px,
+    467px 563px,
+    719px 607px;
+
+  background-position:
+    17px 31px,
+    113px 59px,
+    241px 127px,
+    71px 203px,
+    331px 89px,
+    43px 317px,
+    197px 271px,
+    409px 149px;
+
+  background-repeat: repeat;
+  animation: floatDotsOne 8s ease-in-out infinite alternate;
+}
+
+/* New full SVG star layer 2 */
+.page::after {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 283 353'%3E%3Cpath fill='%2300aaff' fill-opacity='1' transform='translate(44 73) scale(.05)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 397 431'%3E%3Cpath fill='%238cff00' fill-opacity='1' transform='translate(132 26) scale(.055)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 521 389'%3E%3Cpath fill='%23ff6f00' fill-opacity='1' transform='translate(219 118) scale(.055)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 449 587'%3E%3Cpath fill='%23ff1500' fill-opacity='1' transform='translate(91 214) scale(.04)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 673 503'%3E%3Cpath fill='%2300aaff' fill-opacity='1' transform='translate(306 177) scale(.055)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 593 647'%3E%3Cpath fill='%238cff00' fill-opacity='1' transform='translate(156 334) scale(.05)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 761 571'%3E%3Cpath fill='%23ff6f00' fill-opacity='1' transform='translate(382 282) scale(.065)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 829 709'%3E%3Cpath fill='%23ff1702' fill-opacity='1' transform='translate(493 91) scale(.05)' d='M50 0C58 34 66 42 100 50C66 58 58 66 50 100C42 66 34 58 0 50C34 42 42 34 50 0Z'/%3E%3C/svg%3E");
+
+  background-size:
+    283px 353px,
+    397px 431px,
+    521px 389px,
+    449px 587px,
+    673px 503px,
+    593px 647px,
+    761px 571px,
+    829px 709px;
+
+  background-position:
+    91px 17px,
+    271px 113px,
+    37px 261px,
+    183px 73px,
+    421px 211px,
+    59px 431px,
+    349px 331px,
+    607px 149px;
+
+  background-repeat: repeat;
+  animation: floatDotsTwo 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatDotsOne {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translate3d(-18px, -22px, 0);
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translate3d(22px, -34px, 0);
+    opacity: 0.4;
+  }
+}
+
+@keyframes floatDotsTwo {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translate3d(24px, -18px, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate3d(-20px, -31px, 0);
+    opacity: 0.32;
+  }
 }
