@@ -45,7 +45,7 @@ Your job is to:
 
 Return the answer in a clear maintenance report format.
         `,
-      },
+        },
         {
         role: "user",
         content: `

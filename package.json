@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "concurrently \"nodemon server/server.js\" \"npm run dev --prefix client\"",
     "server": "nodemon server/server.js",
-    "client": "npm run dev --prefix client"
+    "client": "npm run dev --prefix client",
+    "build:deckplate-rag": "node server/scripts/buildDeckplateRagData.js",
+    "seed:deckplate": "node server/scripts/seedDeckplatePinecone.js"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^7.2.0",
@@ -14,7 +16,8 @@
     "express": "^5.2.1",
     "multer": "^2.2.0",
     "openai": "^6.42.0",
-    "pdf-parse": "^2.4.5"
+    "pdf-parse": "^2.4.5",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "concurrently": "^10.0.3",
