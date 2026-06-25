@@ -2,7 +2,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 6px 8px;
-    background: transparent;
+    background: linear-gradient(#101322, #101322) padding-box;
 
     display: flex;
     align-items: center;
@@ -15,8 +15,8 @@
 .footer p {
     font-family: "Outfit", Arial, sans-serif;
     margin: 0;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: .7em;
+    font-weight: 400;
     color: white;
 }
 

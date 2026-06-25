@@ -71,6 +71,7 @@ async function searchSimilarNotes({
     embedding,
     topK = 5,
     minScore = 0,
+    filter,
     }) {
     if (!Array.isArray(embedding) || embedding.length === 0) {
         throw new Error("A valid embedding array is required.");
@@ -91,11 +92,17 @@ async function searchSimilarNotes({
 
     const namespace = getMaintenanceNotesNamespace();
 
-    const results = await namespace.query({
+    const queryOptions = {
         vector: embedding,
         topK: safeTopK,
         includeMetadata: true,
-    });
+    };
+
+    if (filter && Object.keys(filter).length > 0) {
+        queryOptions.filter = filter;
+    }
+
+    const results = await namespace.query(queryOptions);
 
     const matches = Array.isArray(results.matches)
         ? results.matches

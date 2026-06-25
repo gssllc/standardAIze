@@ -1,63 +1,80 @@
 :root {
   /* Astronaut */
-  --Astronaut:   #123852;
-  --Astronaut80: #123852CC;
+  --Astronaut: #123852;
+  --Astronaut80: #123852cc;
   --Astronaut60: #12385299;
   --Astronaut40: #12385266;
   --Astronaut20: #12385233;
 
   /* Skybolt */
-  --Skybolt:     #45A8F8;
-  --Skybolt80:   #45A8F8CC;
-  --Skybolt60:   #45A8F899;
-  --Skybolt40:   #45A8F866;
-  --Skybolt20:   #45A8F833;
+  --Skybolt: #45a8f8;
+  --Skybolt80: #45a8f8cc;
+  --Skybolt60: #45a8f899;
+  --Skybolt40: #45a8f866;
+  --Skybolt20: #45a8f833;
 
   /* Nickel */
-  --Nickel:      #7C7B7B;
-  --Nickel80:    #7C7B7BCC;
-  --Nickel60:    #7C7B7B99;
-  --Nickel40:    #7C7B7B66;
-  --Nickel20:    #7C7B7B33;
+  --Nickel: #7c7b7b;
+  --Nickel80: #7c7b7bcc;
+  --Nickel60: #7c7b7b99;
+  --Nickel40: #7c7b7b66;
+  --Nickel20: #7c7b7b33;
 
   /* Obsidian */
-  --Obsidian:    #231F20;
-  --Obsidian80:  #231F20CC;
-  --Obsidian60:  #231F2099;
-  --Obsidian40:  #231F2066;
-  --Obsidian20:  #231F2033;
+  --Obsidian: #231f20;
+  --Obsidian80: #231f20cc;
+  --Obsidian60: #231f2099;
+  --Obsidian40: #231f2066;
+  --Obsidian20: #231f2033;
 
   /* Command */
-  --Command:     #1D293D;
-  --Command80:   #1D293DCC;
-  --Command60:   #1D293D99;
-  --Command40:   #1D293D66;
-  --Command20:   #1D293D33;
+  --Command: #1d293d;
+  --Command80: #1d293dcc;
+  --Command60: #1d293d99;
+  --Command40: #1d293d66;
+  --Command20: #1d293d33;
 
   /* Signal */
-  --Signal:      #0072A7;
-  --Signal80:    #0072A7CC;
-  --Signal60:    #0072A799;
-  --Signal40:    #0072A766;
-  --Signal20:    #0072A733;
-
-  --surface: #FFFFFF;
-  --bg: #F4F6FB;
+  --Signal: #0072a7;
+  --Signal80: #0072a7cc;
+  --Signal60: #0072a799;
+  --Signal40: #0072a766;
+  --Signal20: #0072a733;
 
   /* Crimson */
-  --Crimson: #C73B42;
-  --Crimson60: #C73B4266;
+  --Crimson: #c73b42;
+  --Crimson60: #c73b4266;
 
   /* Citrine */
-  --Citrine: #D5C31F;
-  --Citrine40: #D5C31F33;
+  --Citrine: #d5c31f;
+  --Citrine40: #d5c31f33;
 
   /* Emerald */
-  --Emerald: #50C878;
-  --Emerald40: #50C87833;
+  --Emerald: #50c878;
+  --Emerald40: #50c87833;
 
-  --btn: var(--Command60);
-  --btn-hover-shadow: 0 0 18px rgba(155, 92, 255, 0.35); 
+  /*
+    These are the variables used by muiStyles.js.
+    Your MUI dropdown styles will not render correctly without them.
+  */
+  --text: #c7c7c7;
+  --text-h: #f3f4f6;
+  --bg: #02040b;
+  --surface: #ffffff;
+  --border: #2e303a;
+
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+
+  --btn: #172554;
+  --btn-hover: #5443c5;
+  --btn-hover-shadow: 0 0 18px rgba(155, 92, 255, 0.35);
+
+  --input-filled: #27ae60;
+  --header: #5e7ad4;
+  --social-bg: rgba(47, 48, 58, 0.5);
+
   --btn-gradient-border: linear-gradient(
     90deg,
     #1d4ed8,
@@ -65,14 +82,24 @@
     #e3fc05,
     #22c55e
   );
+
+  --sans: "Rajdhani", Arial, sans-serif;
+  --heading: "Rajdhani", Arial, sans-serif;
+  --mono: Consolas, "Courier New", monospace;
+
+  font-family: var(--sans);
+  color-scheme: dark;
 }
 
-#root, body, html {
+#root,
+body,
+html {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  margin: 0; 
+  min-height: 100%;
+  margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 @font-face {
@@ -224,6 +251,62 @@ select {
 
   background-repeat: repeat;
   animation: floatDotsTwo 10s ease-in-out infinite alternate;
+}
+
+.maintenance-workspace {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  gap: 10%;
+}
+/* MUI Select menus render in a portal under <body>.
+   These global styles ensure the dropdown menu keeps the app's dark theme. */
+.maintenance-dropdown-menu.MuiPaper-root {
+  margin-top: 6px !important;
+  background: #050914 !important;
+  background-color: #050914 !important;
+  background-image: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 18px rgba(155, 92, 255, 0.35) !important;
+  color: #ffffff !important;
+  overflow: hidden !important;
+}
+
+.maintenance-dropdown-menu .MuiMenu-list {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  background: #050914 !important;
+}
+
+.maintenance-dropdown-menu .MuiMenuItem-root {
+  min-height: 42px !important;
+  color: #ffffff !important;
+  background-color: #050914 !important;
+  font-family: var(--sans) !important;
+  font-size: 0.95rem !important;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease !important;
+}
+
+.maintenance-dropdown-menu .MuiMenuItem-root:hover,
+.maintenance-dropdown-menu .MuiMenuItem-root.Mui-focusVisible {
+  background-color: var(--Astronaut) !important;
+  color: #ffffff !important;
+}
+
+.maintenance-dropdown-menu .MuiMenuItem-root.Mui-selected,
+.maintenance-dropdown-menu .MuiMenuItem-root.Mui-selected:hover {
+  background-color: var(--Astronaut) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.maintenance-dropdown-menu .MuiMenuItem-root.Mui-disabled {
+  color: rgba(255, 255, 255, 0.68) !important;
+  background-color: #050914 !important;
+  opacity: 1 !important;
 }
 
 @keyframes floatDotsOne {

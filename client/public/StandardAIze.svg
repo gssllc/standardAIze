@@ -75,7 +75,7 @@
     <style
        id="style4">
       .letters { font-family: Outfit, &quot;Outfit Black&quot;, Arial, Helvetica, sans-serif; font-weight: 900; }
-      .dark { fill: #231f20; }
+      .dark { fill: #ffffff; }
       .ai { fill: url(#aiGradient); }
       .doc { fill: none; stroke: #123852; stroke-width: 16; stroke-linejoin: round; stroke-linecap: round; }
       .doc-detail { fill: none; stroke: #123852; stroke-width: 14; stroke-linecap: round; }

@@ -1,0 +1,288 @@
+{
+  "generatedAt": "2026-06-23T20:18:25.632Z",
+  "typeModelSeries": [
+    "EA-18G",
+    "FA-18",
+    "FA-18E",
+    "FA-18F",
+    "N EA-18G"
+  ],
+  "tecsByTypeModelSeries": {
+    "FA-18": [
+      "AMA9"
+    ],
+    "FA-18E": [
+      "AMAH"
+    ],
+    "FA-18F": [
+      "AMAJ"
+    ],
+    "EA-18G": [
+      "AMAK"
+    ],
+    "N EA-18G": [
+      "NMAK"
+    ]
+  },
+  "componentsByTypeModelSeriesAndTec": {
+    "FA-18||AMA9": [
+      {
+        "value": "016270932",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "016270932",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      },
+      {
+        "value": "015997663",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "015997663",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      }
+    ],
+    "FA-18E||AMAH": [
+      {
+        "value": "016270932",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "016270932",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      },
+      {
+        "value": "015997663",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "015997663",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      }
+    ],
+    "FA-18F||AMAJ": [
+      {
+        "value": "016270932",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "016270932",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      },
+      {
+        "value": "015997663",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "015997663",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      }
+    ],
+    "EA-18G||AMAK": [
+      {
+        "value": "016270932",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "016270932",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      },
+      {
+        "value": "015997663",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "015997663",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      }
+    ],
+    "N EA-18G||NMAK": [
+      {
+        "value": "016270932",
+        "label": "GENERATOR,ALTERNATI",
+        "componentNiin": "016270932",
+        "componentDescription": "GENERATOR,ALTERNATI"
+      }
+    ]
+  },
+  "workCentersByTypeModelSeriesAndTec": {
+    "FA-18||AMA9": [
+      "05A",
+      "62E"
+    ],
+    "FA-18E||AMAH": [
+      "05A",
+      "020",
+      "62E",
+      "62L",
+      "110",
+      "120",
+      "140",
+      "320",
+      "X50",
+      "X55"
+    ],
+    "FA-18F||AMAJ": [
+      "05A",
+      "020",
+      "62A",
+      "62E",
+      "62L",
+      "110",
+      "120",
+      "140",
+      "320",
+      "X50",
+      "X55"
+    ],
+    "EA-18G||AMAK": [
+      "05A",
+      "020",
+      "62E",
+      "62L",
+      "110",
+      "140",
+      "220",
+      "X55"
+    ],
+    "N EA-18G||NMAK": [
+      "05A",
+      "62E"
+    ]
+  },
+  "actionOrgsByTypeModelSeriesAndTec": {
+    "FA-18||AMA9": [
+      "A9D",
+      "C99",
+      "CGA",
+      "D9E",
+      "D9M",
+      "P9F",
+      "P9H"
+    ],
+    "FA-18E||AMAH": [
+      "A9D",
+      "AA6",
+      "AB6",
+      "AB7",
+      "AB9",
+      "ABB",
+      "AD5",
+      "AD6",
+      "AF3",
+      "AF4",
+      "AG8",
+      "AH3",
+      "AW1",
+      "AW2",
+      "C9C",
+      "C99",
+      "CGA",
+      "D9E",
+      "D9K",
+      "D9M",
+      "DGD",
+      "DGE",
+      "P2D",
+      "P6G",
+      "P9F",
+      "P9K",
+      "P9S",
+      "P60",
+      "PA2",
+      "PA3",
+      "PA5",
+      "PA7",
+      "PA9",
+      "PB1",
+      "PC4",
+      "PD3",
+      "PD4",
+      "PD5",
+      "PDA",
+      "PE3",
+      "PF5",
+      "PF6",
+      "PF7",
+      "PG1",
+      "PJ3",
+      "PJ4",
+      "PJ7",
+      "PZS",
+      "TJX",
+      "W9H",
+      "WA5",
+      "WB5",
+      "WC8"
+    ],
+    "FA-18F||AMAJ": [
+      "A9D",
+      "AA6",
+      "AA8",
+      "AA9",
+      "AB2",
+      "AB8",
+      "AF2",
+      "C9C",
+      "C99",
+      "CGA",
+      "D9E",
+      "D9K",
+      "D9M",
+      "DGD",
+      "DGE",
+      "P2D",
+      "P6G",
+      "P9F",
+      "P9K",
+      "P9S",
+      "P60",
+      "PA3",
+      "PA4",
+      "PB1",
+      "PC4",
+      "PD8",
+      "PDA",
+      "PE2",
+      "PE3",
+      "PE7",
+      "PE8",
+      "PF5",
+      "PF6",
+      "PG2",
+      "PG3",
+      "PJ3",
+      "PYB",
+      "PZS",
+      "W9H",
+      "WA5",
+      "WAU",
+      "WB5",
+      "WC8"
+    ],
+    "EA-18G||AMAK": [
+      "A9D",
+      "C9C",
+      "CGA",
+      "D9E",
+      "D9M",
+      "DGD",
+      "DGE",
+      "KA9",
+      "P2D",
+      "P6A",
+      "P6B",
+      "P6C",
+      "P6D",
+      "P6E",
+      "P6G",
+      "P9F",
+      "P9H",
+      "P9K",
+      "P9S",
+      "P60",
+      "P61",
+      "P62",
+      "P63",
+      "P64",
+      "P65",
+      "P66",
+      "P67",
+      "P68",
+      "PZS",
+      "W9H",
+      "WA5",
+      "WAU"
+    ],
+    "N EA-18G||NMAK": [
+      "A9D",
+      "W9H",
+      "WA5"
+    ]
+  }
+}

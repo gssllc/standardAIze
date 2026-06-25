@@ -6,7 +6,7 @@
     "dev": "concurrently \"nodemon server/server.js\" \"npm run dev --prefix client\"",
     "server": "nodemon server/server.js",
     "client": "npm run dev --prefix client",
-    "build:deckplate-rag": "node server/scripts/buildDeckplateRagData.js",
+    "build:deckplate-rag": "node server/scripts/buildDeckplateRagData.js && node server/scripts/buildDeckplateContextOptions.js",
     "seed:deckplate": "node server/scripts/seedDeckplatePinecone.js"
   },
   "dependencies": {

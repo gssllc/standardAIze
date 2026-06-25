@@ -1,4 +1,11 @@
+const fs = require("node:fs/promises");
 const path = require("path");
+
+const MAINTENANCE_CONTEXT_OPTIONS_PATH = path.join(
+    __dirname,
+    "data",
+    "deckplate_context_options.json"
+);
 
 require("dotenv").config({
     path: path.join(__dirname, ".env"),
@@ -80,7 +87,7 @@ app.get("/", (req, res) => {
         error: "Failed to generate embedding.",
         details: error.message,
         });
-  }
+    }
 });
 
 app.post("/api/transcribe", upload.single("audio"), async (req, res) => {
@@ -115,25 +122,62 @@ app.post("/api/transcribe", upload.single("audio"), async (req, res) => {
 
 app.post("/api/generate-ai-note", async (req, res) => {
     try {
-        const { rawNote } = req.body;
+        const {
+        rawNote,
+        context = {},
+        } = req.body;
 
-        if (!rawNote || !rawNote.trim()) {
-            return res.status(400).json({
-                error: "Maintenance note is required.",
-            });
+        if (typeof rawNote !== "string" || !rawNote.trim()) {
+        return res.status(400).json({
+            error: "Maintenance note is required.",
+        });
         }
 
-        const aiNote = await generateMaintenanceAiNote(rawNote);
+        const cleanedRawNote = rawNote.trim();
 
-        res.json({
-            aiNote,
+        const aiNote = await generateMaintenanceAiNote({
+        rawNote: cleanedRawNote,
+        context,
+        });
+
+        return res.json({
+        aiNote,
         });
     } catch (error) {
         console.error("Error generating AI note:", error);
 
-        res.status(500).json({
+        return res.status(500).json({
         error: "Failed to generate AI note.",
         details: error.message,
+        });
+    }
+});
+
+app.get("/api/maintenance-context-options", async (req, res) => {
+    try {
+        const fileContents = await fs.readFile(
+        MAINTENANCE_CONTEXT_OPTIONS_PATH,
+        "utf8"
+        );
+
+        const contextOptions = JSON.parse(fileContents);
+
+        return res.json(contextOptions);
+    } catch (error) {
+        if (error.code === "ENOENT") {
+        return res.status(404).json({
+            error:
+            "Maintenance context options file was not found. Run npm run build:deckplate-rag first.",
+        });
+        }
+
+        console.error(
+        "Failed to load maintenance context options:",
+        error
+        );
+
+        return res.status(500).json({
+        error: "Failed to load maintenance context options.",
         });
     }
 });

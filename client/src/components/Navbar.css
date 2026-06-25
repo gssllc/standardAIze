@@ -10,6 +10,7 @@
 
     position: relative;
     z-index: 10;
+    background: linear-gradient(#101322, #101322) padding-box;
 }
 
 .standardAIze-logo {
