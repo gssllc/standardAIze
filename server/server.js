@@ -28,6 +28,7 @@ const OpenAI = require("openai");
 const { toFile } = require("openai/uploads");
 
 const { generateMaintenanceAiNote } = require("./services/aiNoteService");
+
 const {
     generateUserQueryEmbedding,
 } = require("./services/embeddingService");
@@ -48,44 +49,33 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     res.send("Express server is running!");
-    });
+});
 
-    /*
-    Temporary testing endpoint.
-
-    Send:
-    {
-        "text": "How do I submit a maintenance request?"
-    }
-
-    It intentionally returns only the vector length and a short preview,
-    not the full 1,536-number embedding vector.
-    */
-    app.post("/api/test-embedding", async (req, res) => {
+app.post("/api/test-embedding", async (req, res) => {
     try {
         const { text } = req.body;
 
         if (typeof text !== "string" || !text.trim()) {
-        return res.status(400).json({
-            error: "A text value is required.",
-        });
+            return res.status(400).json({
+                error: "A text value is required.",
+            });
         }
 
         const embedding = await generateUserQueryEmbedding(text);
 
         return res.json({
-        success: true,
-        model: process.env.EMBEDDING_MODEL,
-        dimensions: embedding.length,
-        preview: embedding.slice(0, 5),
+            success: true,
+            model: process.env.EMBEDDING_MODEL,
+            dimensions: embedding.length,
+            preview: embedding.slice(0, 5),
         });
     } catch (error) {
         console.error("Test embedding route error:", error);
 
         return res.status(500).json({
-        success: false,
-        error: "Failed to generate embedding.",
-        details: error.message,
+            success: false,
+            error: "Failed to generate embedding.",
+            details: error.message,
         });
     }
 });
@@ -93,29 +83,29 @@ app.get("/", (req, res) => {
 app.post("/api/transcribe", upload.single("audio"), async (req, res) => {
     try {
         if (!req.file) {
-        return res.status(400).json({
-            error: "No audio file uploaded.",
-        });
+            return res.status(400).json({
+                error: "No audio file uploaded.",
+            });
         }
 
         const audioFile = await toFile(req.file.buffer, "voice.webm", {
-        type: req.file.mimetype || "audio/webm",
-    });
-
-    const transcription = await openai.audio.transcriptions.create({
-        model: "gpt-4o-transcribe",
-        file: audioFile,
+            type: req.file.mimetype || "audio/webm",
         });
 
-        res.json({
-        text: transcription.text,
+        const transcription = await openai.audio.transcriptions.create({
+            model: "gpt-4o-transcribe",
+            file: audioFile,
+        });
+
+        return res.json({
+            text: transcription.text,
         });
     } catch (error) {
         console.error("Transcription error:", error);
 
-        res.status(500).json({
-        error: "Failed to transcribe audio.",
-        details: error.message,
+        return res.status(500).json({
+            error: "Failed to transcribe audio.",
+            details: error.message,
         });
     }
 });
@@ -123,32 +113,32 @@ app.post("/api/transcribe", upload.single("audio"), async (req, res) => {
 app.post("/api/generate-ai-note", async (req, res) => {
     try {
         const {
-        rawNote,
-        context = {},
+            rawNote,
+            context = {},
         } = req.body;
 
         if (typeof rawNote !== "string" || !rawNote.trim()) {
-        return res.status(400).json({
-            error: "Maintenance note is required.",
-        });
+            return res.status(400).json({
+                error: "Maintenance note is required.",
+            });
         }
 
         const cleanedRawNote = rawNote.trim();
 
         const aiNote = await generateMaintenanceAiNote({
-        rawNote: cleanedRawNote,
-        context,
+            rawNote: cleanedRawNote,
+            context,
         });
 
         return res.json({
-        aiNote,
+            aiNote,
         });
     } catch (error) {
         console.error("Error generating AI note:", error);
 
         return res.status(500).json({
-        error: "Failed to generate AI note.",
-        details: error.message,
+            error: "Failed to generate AI note.",
+            details: error.message,
         });
     }
 });
@@ -156,8 +146,8 @@ app.post("/api/generate-ai-note", async (req, res) => {
 app.get("/api/maintenance-context-options", async (req, res) => {
     try {
         const fileContents = await fs.readFile(
-        MAINTENANCE_CONTEXT_OPTIONS_PATH,
-        "utf8"
+            MAINTENANCE_CONTEXT_OPTIONS_PATH,
+            "utf8"
         );
 
         const contextOptions = JSON.parse(fileContents);
@@ -165,19 +155,19 @@ app.get("/api/maintenance-context-options", async (req, res) => {
         return res.json(contextOptions);
     } catch (error) {
         if (error.code === "ENOENT") {
-        return res.status(404).json({
-            error:
-            "Maintenance context options file was not found. Run npm run build:deckplate-rag first.",
-        });
+            return res.status(404).json({
+                error:
+                    "Maintenance context options file was not found. Run npm run build:deckplate-rag first.",
+            });
         }
 
         console.error(
-        "Failed to load maintenance context options:",
-        error
+            "Failed to load maintenance context options:",
+            error
         );
 
         return res.status(500).json({
-        error: "Failed to load maintenance context options.",
+            error: "Failed to load maintenance context options.",
         });
     }
 });

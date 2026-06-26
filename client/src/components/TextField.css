@@ -129,3 +129,22 @@
         background-position: center, 0% 50%;
     }
 }
+
+.react-aria-TextArea,
+.ai-note-output {
+  width: 100%;
+  min-height: 250px;
+  height: 250px;
+  padding: 14px 18px;
+  box-sizing: border-box;
+
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+
+  color: #e5ebe6;
+  background: #101322;
+
+  border-radius: 8px;
+}

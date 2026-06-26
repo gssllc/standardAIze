@@ -44,9 +44,15 @@ const EMPTY_CONTEXT_OPTIONS = {
   actionOrgsByTypeModelSeriesAndTec: {},
 };
 
+const EMPTY_AI_NOTE = {
+  cleanedNote: "",
+  suggestions: [],
+  trendNotes: [],
+};
+
 function App() {
   const [maintenanceNote, setMaintenanceNote] = useState("");
-  const [aiNote, setAiNote] = useState("");
+  const [aiNote, setAiNote] = useState(null);
 
   const [maintenanceContext, setMaintenanceContext] =
     useState(EMPTY_CONTEXT);
@@ -163,6 +169,25 @@ function App() {
       typeModelSeriesTecKey
     ] || [];
 
+  function normalizeAiNoteFromResponse(value) {
+    if (typeof value === "string") {
+      return {
+        ...EMPTY_AI_NOTE,
+        cleanedNote: value,
+      };
+    }
+
+    return {
+      cleanedNote: value?.cleanedNote || "",
+      suggestions: Array.isArray(value?.suggestions)
+        ? value.suggestions
+        : [],
+      trendNotes: Array.isArray(value?.trendNotes)
+        ? value.trendNotes
+        : [],
+    };
+  }
+
   function handleTranscriptionComplete(transcribedText) {
     setMaintenanceNote((currentNote) => {
       if (!currentNote.trim()) {
@@ -226,7 +251,10 @@ function App() {
     const cleanedMaintenanceNote = maintenanceNote.trim();
 
     if (!cleanedMaintenanceNote) {
-      setAiNote("Enter or record a maintenance note first.");
+      setAiNote({
+        ...EMPTY_AI_NOTE,
+        cleanedNote: "Enter or record a maintenance note first.",
+      });
       return;
     }
 
@@ -237,7 +265,7 @@ function App() {
 
     try {
       setIsGeneratingAiNote(true);
-      setAiNote("");
+      setAiNote(null);
 
       console.log("Generate AI Note request body:", requestBody);
 
@@ -263,15 +291,20 @@ function App() {
       }
 
       setAiNote(
-        data.aiNote ||
-          "The AI response did not include a maintenance note."
+        normalizeAiNoteFromResponse(
+          data.aiNote || {
+            cleanedNote:
+              "The AI response did not include a maintenance note.",
+          }
+        )
       );
     } catch (error) {
       console.error("Generate AI Note error:", error);
 
-      setAiNote(
-        `Unable to generate AI note: ${error.message}`
-      );
+      setAiNote({
+        ...EMPTY_AI_NOTE,
+        cleanedNote: `Unable to generate AI note: ${error.message}`,
+      });
     } finally {
       setIsGeneratingAiNote(false);
     }
@@ -502,6 +535,12 @@ function App() {
           />
         </Box>
 
+        {contextOptionsError && (
+          <p className="context-options-error">
+            {contextOptionsError}
+          </p>
+        )}
+
         <div className="text-field-container">
           <div className="text-field-button-container">
             <AriaTextField>
@@ -525,34 +564,67 @@ function App() {
               </div>
             </AriaTextField>
 
-          <Button
-            type="button"
-            variant="contained"
-            sx={{
-              ...buttonStyles,
-              width: "fit-content",
-              minWidth: "unset",
-              alignSelf: "flex-start",
-            }}
-            onClick={handleGenerateAiNote}
-            disabled={isGeneratingAiNote}
-          >
-              {isGeneratingAiNote
-                ? "Generating AI Note..."
-                : "Generate AI Note"}
-            </Button>
+            {isGeneratingAiNote ? (
+              <p className="generating-message">
+                Generating AI Note...
+              </p>
+            ) : (
+              <Button
+                type="button"
+                variant="contained"
+                sx={{
+                  ...buttonStyles,
+                  width: "fit-content",
+                  minWidth: "unset",
+                  alignSelf: "flex-start",
+                }}
+                onClick={handleGenerateAiNote}
+              >
+                Generate AI Note
+              </Button>
+            )}
           </div>
 
           <AriaTextField>
             <Label>AI Note</Label>
 
             <div className="ai-textarea-wrapper">
-              <TextArea
-                readOnly
-                className="react-aria-TextArea"
-                placeholder="Waiting for AI response..."
-                value={aiNote}
-              />
+              <div className="ai-note-output">
+                {!aiNote ? (
+                  <p className="ai-note-placeholder">
+                    Waiting for AI response...
+                  </p>
+                ) : (
+                  <>
+                    <section>
+                      {/* <h3>Cleaned Note</h3> */}
+                      <p>{aiNote.cleanedNote}</p>
+                    </section>
+
+                    {aiNote.suggestions?.length > 0 && (
+                      <section>
+                        <h3>Suggestions</h3>
+                        <ul>
+                          {aiNote.suggestions.map((suggestion, index) => (
+                            <li key={index}>{suggestion}</li>
+                          ))}
+                        </ul>
+                      </section>
+                    )}
+
+                    {aiNote.trendNotes?.length > 0 && (
+                      <section>
+                        <h3>Trend Notes</h3>
+                        <ul>
+                          {aiNote.trendNotes.map((trendNote, index) => (
+                            <li key={index}>{trendNote}</li>
+                          ))}
+                        </ul>
+                      </section>
+                    )}
+                  </>
+                )}
+              </div>
             </div>
           </AriaTextField>
         </div>
